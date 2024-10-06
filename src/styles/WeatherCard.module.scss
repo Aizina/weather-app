@@ -1,0 +1,46 @@
+.mainWrap {
+    .mainInfoWrap {
+        margin-bottom: 20px;
+        p {
+            font-size: 1.7rem;
+            text-transform: capitalize;
+        }
+        h2 {
+            font-size: 2.3rem;
+        }
+        .MainInfo__Text {
+            font-size: 1.2rem;
+        }
+    }
+
+    .additionalInfoWrap {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        .additionalInfo__Icons {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .detailedInfoWrap {
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+
+            .detailedInfo__Icons {
+                width: 20px;
+                height: 20px;
+            }
+    
+            .detailedInfo__Text {
+                font-size: 1.3rem;
+                line-height: 130%;
+            }
+        }
+    }
+}

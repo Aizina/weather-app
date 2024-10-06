@@ -1,0 +1,19 @@
+.weatherForecastDiv {
+    background-color: rgba(60, 60, 60, 0.26);
+    padding: 15px;
+    border-radius: 10px;
+    .weatherForecastButton {
+        background-color:transparent;
+        border: 0;
+        font-size: 1.5rem;
+        margin: 7px;
+    }
+    .weatherForecastButton:hover {
+        background-color: #ddd;
+      }
+      
+      .active {
+        font-weight: bold;
+        border-bottom: 2px solid black;
+      }
+}

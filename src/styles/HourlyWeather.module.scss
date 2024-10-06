@@ -1,0 +1,38 @@
+.hourlyWeatherGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+
+    @media (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+      }
+
+    .hourlyWeatherRow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+
+        .hourlyWeatherTimeWrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .hourlyWeatherTimeIcon {
+                width: 30px;
+                height: 30px;
+            }
+          }
+
+          .hourlyWeatherTemp {
+            font-size: 1em;
+            font-weight: bold;
+            text-align: right;
+          }
+      }
+  }
+  
+ 
+  

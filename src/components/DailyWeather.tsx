@@ -9,12 +9,12 @@ const DailyWeather: React.FC<DailyWeatherProps> = ({ data }) => {
       return <div>No daily forecast data available</div>;
     }
 
-    const limitedData = data.slice(0, 8);
+    const filteredData = data.filter((_, index) => index % 8 === 0);
 
   return (
     <div>
       <div className={style.dailyWeatherGrid}>
-        {limitedData.map((day, index)=> (
+        {filteredData.map((day, index)=> (
           <div key={index} className={style.dailyWeatherRow}>  
               <div className={style.dailyWeatherTimeWrap}>
                 <div>{convertUnixTimestampToDayMonth(day.time)}</div>
@@ -26,7 +26,7 @@ const DailyWeather: React.FC<DailyWeatherProps> = ({ data }) => {
               </div>
 
                 <div className={style.dailyWeatherTemp}>
-                    {day.temperature}°C
+                {Math.round(day.temperature)}°C
                 </div>
           </div>
         ))}

@@ -22,7 +22,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
   return (
     <div className={style.mainWrap}>
       <div className={style.mainInfoWrap}>
-        <p> {temperature}°C</p> 
+        <p> {Math.round(temperature)}°C</p> 
         <p>{description}</p>
         <h2>{city}</h2>
         <LocalTime time={time} className={style.MainInfo__Text}/> 
@@ -35,32 +35,32 @@ const WeatherCard: React.FC<WeatherCardProps> = ({
         <img src='/icons/sunset.png' className={style.additionalInfo__Icons}/>
         <HourTime time={sunset} className={style.additionalInfo__Text}/>    
         <span className={style.additionalInfo__Lines}> | </span>
-        <span className={style.additionalInfo__Text}>Max: {temp_max}°C </span>
+        <span className={style.additionalInfo__Text}>Макс: {temp_max}°C </span>
         <span className={style.additionalInfo__Lines}> | </span>
-        <span className={style.additionalInfo__Text}>Min: {temp_min}°C </span>
+        <span className={style.additionalInfo__Text}>Мин: {temp_min}°C </span>
       </div>
       
 
       <div className={style.detailedInfoWrap}>
         <div> 
           <img src='/icons/temperature.png' className={style.detailedInfo__Icons}/> 
-          <span className={style.detailedInfo__Text}>Feels Like: {feels_like}°C</span>
+          <span className={style.detailedInfo__Text}>Ощущается как: {feels_like}°C</span>
         </div>
         <div>
           <img src='/icons/barometer.png' className={style.detailedInfo__Icons}/> 
-          <span className={style.detailedInfo__Text}>Pressure: {pressure} hPa</span>
+          <span className={style.detailedInfo__Text}>Давление: {pressure} hPa</span>
         </div>
         <div>
           <img src='/icons/moisture.png' className={style.detailedInfo__Icons}/> 
-          <span className={style.detailedInfo__Text}>Humidity: {humidity}%</span>
+          <span className={style.detailedInfo__Text}>Влажность: {humidity}%</span>
         </div>
         <div>
           <img src='/icons/eye.png' className={style.detailedInfo__Icons}/> 
-          <span className={style.detailedInfo__Text}>Visibility: {visibility} meters</span>  
+          <span className={style.detailedInfo__Text}>Видимость: {visibility} метров</span>  
         </div>
         <div>
           <img src='/icons/wind.png' className={style.detailedInfo__Icons}/> 
-          <span className={style.detailedInfo__Text}>Wind speed: {wind} km/h </span>  
+          <span className={style.detailedInfo__Text}>Скорость ветра: {wind} км/час </span>  
         </div>
       </div>
     </div>

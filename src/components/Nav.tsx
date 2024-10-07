@@ -4,51 +4,54 @@ import style from '../styles/Nav.module.scss';
 
 const Nav: React.FC<NavProps> = ({ onSearch, onGeolocation }) => {
   const [city, setCity] = useState('');
+  const [searchMethod, setSearchMethod] = useState<'search' | 'geolocation' | ''>(''); // Состояние для отслеживания метода
 
-  //Функция для поиска
+  // Функция для поиска
   const handleSearch = useCallback(() => {
     const trimmedCity = city.trim();
     if (trimmedCity) {
       onSearch(trimmedCity);
-      setCity(''); 
+      setCity('');
+      setSearchMethod('search');
     }
   }, [city, onSearch]);
 
-  //Функция для геолокации
+  // Функция для геолокации
   const handleGeolocation = useCallback(() => {
-    const userConfirmed = window.confirm('Do you allow the app to access your geolocation?');
-  
+    const userConfirmed = window.confirm('Разрешите использовать вашу геопозицию?');
+
     if (userConfirmed) {
       if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser.");
+        alert("Ваш браузер не поддерживает геопозицию");
         return;
       }
-  
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          onGeolocation(latitude, longitude); 
+          onGeolocation(latitude, longitude);
+          setSearchMethod('geolocation'); 
         },
         (error) => {
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              alert('Permission to access geolocation was denied.');
+              alert('Отказано в доступе к геопозиции.');
               break;
             case error.POSITION_UNAVAILABLE:
-              alert('Position is unavailable.');
+              alert('Геопозиция недоступна.');
               break;
             case error.TIMEOUT:
-              alert('The request to get user location timed out.');
+              alert('Время запроса истекло.');
               break;
             default:
-              alert('An unknown error occurred.');
+              alert('Неизвестная ошибка.');
               break;
           }
           console.error('Ошибка получения геолокации:', error.message);
         }
       );
     } else {
-      alert('You denied access to your geolocation. You will have to input your city to see weather data.');
+      alert('Отказано в доступе к геопозиции. Пожалуйста, введите город вручную.');
     }
   }, [onGeolocation]);
 
@@ -56,7 +59,7 @@ const Nav: React.FC<NavProps> = ({ onSearch, onGeolocation }) => {
     <nav className={style.nav}>
       <input
         type="text"
-        placeholder="Enter city..."
+        placeholder="Введите название города..."
         value={city}
         onChange={(e) => setCity(e.target.value)}
         className={style.input}
@@ -67,6 +70,10 @@ const Nav: React.FC<NavProps> = ({ onSearch, onGeolocation }) => {
       <button type="button" onClick={handleGeolocation} className={style.navIconsDiv}>
         <img src='/icons/location.png' alt='Location' className={style.navIcons} />
       </button>
+
+      {/* Сообщение пользователю о методе поиска */}
+      {searchMethod === 'search' && <div className={style.searchInfo}>Данные отображены через поиск</div>}
+      {searchMethod === 'geolocation' && <div className={style.searchInfo}>Данные отображены через геопозицию</div>}
     </nav>
   );
 };

@@ -27,7 +27,7 @@ const HourlyWeather: React.FC<HourlyWeatherProps> = ({ data }) => {
             </div>
 
             <div className={style.hourlyWeatherTemp}>
-              {hour.temperature}°C
+              {Math.round(hour.temperature)}°C
             </div>
           </div>
         ))}

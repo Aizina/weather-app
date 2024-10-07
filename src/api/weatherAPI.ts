@@ -11,6 +11,7 @@ export const getWeatherByCity = async (city: string): Promise<WeatherData> => {
       q: city,
       appid: API_KEY,
       units: 'metric',
+      lang: 'ru'
     },
   });
   console.log("response for city is", response, response.data);
@@ -25,6 +26,7 @@ export const getWeatherByGeolocation = async (lat: number, lon: number): Promise
       lon,
       appid: API_KEY,
       units: 'metric',
+      lang: 'ru'
     },
   });
   return response.data;
@@ -37,7 +39,7 @@ export const getDailyForecast = async (city: string): Promise<DailyWeatherData[]
       q: city,
       appid: API_KEY,
       units: 'metric',
-      limit: 7,
+      lang: 'ru'
     },
   });
   console.log("response for 5 days is", response, response.data, response.data.list);
@@ -57,7 +59,8 @@ export const getHourlyForecast = async (city: string): Promise<HourlyWeatherData
       q: city,
       appid: API_KEY,
       units: 'metric',
-      limit: 5,
+      cnt: 8,
+      lang: 'ru'
     },
   });
   console.log("response for ${city} is", response, response.data, response.data.list);

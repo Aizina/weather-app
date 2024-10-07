@@ -1,4 +1,8 @@
 .mainWrap {
+    padding: 10px;
+    @media (min-width: 1400px) {
+        padding: 25px;
+    }
     .mainInfoWrap {
         margin-bottom: 20px;
         p {
@@ -10,6 +14,17 @@
         }
         .MainInfo__Text {
             font-size: 1.2rem;
+        }
+        @media (max-width: 500px) {
+            p {
+                font-size: 1.2rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            .MainInfo__Text {
+                font-size: 0.8rem;
+            }
         }
     }
 
@@ -40,6 +55,9 @@
             .detailedInfo__Text {
                 font-size: 1.3rem;
                 line-height: 130%;
+                @media (max-width: 500px) {
+                    font-size: 0.9rem;
+                }
             }
         }
     }

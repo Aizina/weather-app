@@ -24,24 +24,24 @@ const WeatherForecast: React.FC<HourlyWeatherProps> = ({ city, data }) => {
     setForecastType(type); 
   };
   
-//Показываеь почасовой или дневной прогноз погоды в зависимости от того, что выбрал юзер
+//Показывает почасовой или дневной прогноз погоды в зависимости от того, что выбрал юзер
   const renderedForecast = useMemo(() => {
     if (forecastType === 'hourly') {
-      return data ? <HourlyWeather city={city} data={data} /> : <p>No hourly data available.</p>;
+      return data ? <HourlyWeather city={city} data={data} /> : <p>Нет данных о прогнозе на сегодняшний день</p>;
     }
     if (forecastType === 'daily') {
       return dailyForecast && dailyForecast.length > 0 ? (
         <DailyWeather city={city} data={dailyForecast} />
       ) : (
-        <p>No daily forecast available.</p>
+        <p>Нет данных о прогнозе на 5 дней.</p>
       );
     }
   }, [forecastType, data, dailyForecast, city]); 
 
   return (
     <div className={style.weatherForecastDiv}>
-      <button onClick={() => handleForecastTypeChange('hourly')} className={`${style.weatherForecastButton} ${forecastType === 'hourly' ? style.active : ''}`}>Hourly Forecast</button>
-      <button onClick={() => handleForecastTypeChange('daily')} className={`${style.weatherForecastButton} ${forecastType === 'daily' ? style.active : ''}`}>Daily Forecast</button>
+      <button onClick={() => handleForecastTypeChange('hourly')} className={`${style.weatherForecastButton} ${forecastType === 'hourly' ? style.active : ''}`}>Почасовой прогноз</button>
+      <button onClick={() => handleForecastTypeChange('daily')} className={`${style.weatherForecastButton} ${forecastType === 'daily' ? style.active : ''}`}>Прогноз на 5 дней</button>
       {renderedForecast}
     </div>
   );

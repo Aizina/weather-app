@@ -5,11 +5,11 @@ import WeatherForecast from '../components/WeatherForecast';
 import style from '../styles/Home.module.scss';
 
 //Получаем все данные из App и передаем их в WeatherCard и WeatherForecast для дальнейшего отображения.
-const Home: React.FC<HomeProps> = ({ city, weatherData, hourlyWeatherData, loading, error }) => {
+const Home: React.FC<HomeProps> = ({ city, weatherData, hourlyWeatherData, loading, error, dailyWeatherData }) => {
   return (
     <div className={style.HomeWrap}>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+      
+      {loading && <p className={style.loading}>Loading...</p>}
       
       {weatherData && (
         <WeatherCard
@@ -30,8 +30,11 @@ const Home: React.FC<HomeProps> = ({ city, weatherData, hourlyWeatherData, loadi
       )}
       
       {hourlyWeatherData && city && (
-        <WeatherForecast city={city} data={hourlyWeatherData} />
+        <WeatherForecast city={city} hourlyData={hourlyWeatherData} dailyData={dailyWeatherData} />
       )}
+
+    
+    {error && <p>Error: {error}</p>}
     </div>
   );
 };

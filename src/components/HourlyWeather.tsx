@@ -3,7 +3,7 @@ import { HourlyWeatherProps } from '../interfaces/interfaces';
 import { convertUnixTimestampToHourTime } from '../utils/convertDate';
 import style from '../styles/HourlyWeather.module.scss'; // Подключение файла стилей как модуля
 
-const HourlyWeather: React.FC<HourlyWeatherProps> = ({ data }) => {
+const HourlyWeather: React.FC<HourlyWeatherProps> = ({data }) => {
   
   if (!data || data.length === 0) {
     return <div>No hourly forecast data available</div>;

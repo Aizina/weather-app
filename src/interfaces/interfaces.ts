@@ -85,6 +85,12 @@ export interface DailyWeatherProps {
   data: DailyWeatherData[];
 }
 
+export interface WeatherForecastProps {
+  city: string;
+  hourlyData: HourlyWeatherData[] | null;
+  dailyData: DailyWeatherData[] | null;  
+}
+
 //Интерфейс данных основной страницы
 export interface HomeProps {
   city: string;
@@ -92,4 +98,5 @@ export interface HomeProps {
   hourlyWeatherData: any; 
   loading: boolean;
   error: string | null;
+  dailyWeatherData: any;
 }
